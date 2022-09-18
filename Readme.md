@@ -20,5 +20,5 @@ password: password
 ## API Documentation
 
 ```
-export file survey-app.postman_collection.json into postman then you will get all data to do some request
+import file survey-app.postman_collection.json into postman then you will get all data to do some request
 ```
