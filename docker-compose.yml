@@ -1,0 +1,31 @@
+version: '3.7'
+services: 
+  database:
+    image: mongo:4.2.18
+    environment:
+      - MONGO_DB=survey-app
+    ports: 
+      - 27017:27017
+    networks:
+      - pos_network
+
+  server:
+    environment: 
+      - DB_PORT=27017
+      - DB_DATABASE=survey-app
+      - DB_HOST=database
+      - SERVER_PORT=3000
+    ports: 
+      - 3000:3000
+    volumes: 
+      - '.:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    depends_on: 
+      - database
+    build: 
+      context: .
+    networks: 
+      - pos_network
+networks: 
+  pos_network:
+    name: pos_network
